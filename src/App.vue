@@ -2,8 +2,8 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>When you just don't know what to do </span>
-        <span class="font-weight-light"> Chuck them a Norris!!</span>
+        <span>Chuck-the </span>
+        <span class="font-weight-light">-Norris</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
