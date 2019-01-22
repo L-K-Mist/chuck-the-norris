@@ -44,6 +44,28 @@ export default new Vuex.Store({
       } catch (error) {
         console.log("​error", error);
       }
+    },
+    async fetchCategoryJoke({
+      state
+    }, payload) {
+      /**
+       * EXAMPLE RESULT: {
+         "category": ["science"],
+         "icon_url": "https:\/\/assets.chucknorris.host\/img\/avatar\/chuck-norris.png",
+         "id": "_en05aqcsvuu3v2vopnoga",
+         "url": "https:\/\/api.chucknorris.io\/jokes\/_en05aqcsvuu3v2vopnoga",
+         "value": "While urinating, Chuck Norris is easily capable of welding titanium."
+       }
+       */
+      try {
+        const link = `https://api.chucknorris.io/jokes/random?category=${payload}`
+        const response = await axios.get(link)
+        state.categories = response.data.value
+        console.log('​response.data', response.data)
+
+      } catch (error) {
+        console.log("​error", error);
+      }
     }
   }
 });

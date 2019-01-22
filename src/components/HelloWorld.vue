@@ -89,6 +89,7 @@ export default {
   created(){
     this.$store.dispatch("getJokes")
     this.$store.dispatch("getCategories")
+    this.$store.dispatch("fetchCategoryJoke", "science")
   },
   data: () => ({
     ecosystem: [
