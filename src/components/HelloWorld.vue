@@ -86,6 +86,10 @@
 
 <script>
 export default {
+  created(){
+    this.$store.dispatch("getJokes")
+    this.$store.dispatch("getCategories")
+  },
   data: () => ({
     ecosystem: [
       {
@@ -137,7 +141,24 @@ export default {
         href: "https://vuetifyjs.com/getting-started/frequently-asked-questions"
       }
     ]
-  })
+  }),
+  computed: {
+    jokes() {
+      return this.$store.getters.jokes
+    },
+    categories() {
+      return this.$store.getters.categories
+    }
+  },
+  watch: {
+    jokes(newVal){
+      console.log("jokes", newVal)
+    },
+        categories(newVal){
+      console.log("categories", newVal)
+    },
+
+  }
 };
 </script>
 
