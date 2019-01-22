@@ -27,7 +27,7 @@ const actions = {
     const sentences = nlp(payload) // Gives us an array of sentences
       .sentences()
       .data();
-    const topSentence = sentences.shift().text; // Gives us the first element of the array as a string
+    state.topSentence = sentences.shift().text; // Gives us the first element of the array as a string
 
     if (sentences.length) {
       // If there's still a sentence left after .shift()

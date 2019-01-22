@@ -32,7 +32,7 @@
 </v-flex>
 
       </v-flex>
-      <v-flex xs12>
+      <v-flex xs12 xl10>
         <v-img
           :src="require('../assets/chuckBackground.jpg')"
           class="my-3"
@@ -42,7 +42,14 @@
         <v-container grid-list-xs>
           <v-layout column fluid>
             <v-flex xs11>
-              <p class="meme-words" style="font-size: 4.5vw">{{joke}}</p>           
+              <p class="meme-words" style="font-size: 4.5vw">{{topSentence}}</p>           
+            </v-flex>
+            <v-flex xs12 style="position: absolute; bottom: 1vw; left: 5%; right: 5%">
+              <p v-if="bottomSentences"  class="meme-words" style="font-size: 4.5vw">
+                <span class="text-xs-center" v-for="(sentence, index) in bottomSentences" :key="index">
+                  {{sentence.text}}
+                </span>
+              </p>           
             </v-flex>
           </v-layout>
         </v-container>
@@ -61,8 +68,11 @@ export default {
    
   }),
   computed: {
-    joke() {
-      return this.$store.getters.joke
+    topSentence() {
+      return this.$store.getters.topSentence
+    },
+    bottomSentences() {
+      return this.$store.getters.bottomSentences
     },
     categories() {
       return this.$store.getters.categories
