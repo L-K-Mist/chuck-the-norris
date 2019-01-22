@@ -22,7 +22,7 @@
         </p>
       </v-flex>
 <v-flex xs12>
-      <v-btn class="text-uppercase"
+      <v-btn small class="text-uppercase"
         v-for="(category, index) in categories" :key="index"
         @click="fetch(category)"
       >
@@ -37,12 +37,14 @@
           :src="require('../assets/chuckBackground.jpg')"
           class="my-3"
           contain
-          height="800"
+          
         >
         <v-container grid-list-xs>
-          <v-flex xs12>
-            <p class="meme-words" style="font-size: 3em">{{joke}}</p>           
-          </v-flex>
+          <v-layout column fluid>
+            <v-flex xs11>
+              <p class="meme-words" style="font-size: 4.5vw">{{joke}}</p>           
+            </v-flex>
+          </v-layout>
         </v-container>
         </v-img>
       </v-flex>
@@ -88,7 +90,7 @@ export default {
 .meme-words {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   -webkit-text-fill-color: white; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-width: 0.17vw;
   -webkit-text-stroke-color: black;
 }
 </style>
