@@ -17,7 +17,7 @@
         <p class="subheading font-weight-regular">
           You have a friend, 
           <br>they have a problem.
-          <br>There's nothing you can do about their tanking career, right?
+          <br>And there's nothing you can do to make it all better...
           <br>So Chuck them a topical Norris! And at least give them a smile.
         </p>
       </v-flex>
@@ -38,25 +38,13 @@
           class="my-3"
           contain
           height="800"
-        ></v-img>
-      </v-flex>
-      <v-flex
-        xs12
-        mb-5
-      >
-        <h2 class="headline font-weight-bold mb-3">Ecosystem</h2>
-
-        <v-layout justify-center>
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-layout>
+        >
+        <v-container grid-list-xs>
+          <v-flex xs12>
+            <p class="meme-words" style="font-size: 3em">{{joke}}</p>           
+          </v-flex>
+        </v-container>
+        </v-img>
       </v-flex>
     </v-layout>
   </v-container>
@@ -65,36 +53,22 @@
 <script>
 export default {
   created(){
-    // this.$store.dispatch("getJokes")
     this.$store.dispatch("getCategories")
   },
   data: () => ({
-    ecosystem: [
-      {
-        text: "vuetify-loader",
-        href: "https://github.com/vuetifyjs/vuetify-loader"
-      },
-      {
-        text: "github",
-        href: "https://github.com/vuetifyjs/vuetify"
-      },
-      {
-        text: "awesome-vuetify",
-        href: "https://github.com/vuetifyjs/awesome-vuetify"
-      }
-    ],
+   
   }),
   computed: {
-    jokes() {
-      return this.$store.getters.jokes
+    joke() {
+      return this.$store.getters.joke
     },
     categories() {
       return this.$store.getters.categories
     }
   },
   watch: {
-    jokes(newVal){
-      console.log("jokes", newVal)
+    joke(newVal){
+      console.log("joke", newVal)
     },
     categories(newVal){
       console.log("categories", newVal)
@@ -110,5 +84,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.meme-words {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
 </style>

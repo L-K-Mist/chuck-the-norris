@@ -7,13 +7,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     loading: false,
-    jokes: null,
+    joke: null,
     categories: null,
     categoryJoke: null
   },
   getters: {
-    jokes(state) {
-      return state.jokes
+    joke(state) {
+      return state.joke
     },
     categories(state) {
       return state.categories
@@ -24,19 +24,6 @@ export default new Vuex.Store({
   },
   mutations: {}, // Evan You has mentioned the likelihood of doing away with mutations, so I'm getting used to doing without them too.
   actions: {
-    async getJokes({
-      state
-    }) {
-      state.loading = true;
-      try {
-        const response = await axios.get("https://api.chucknorris.io/jokes/random")
-        state.jokes = response.data.value
-      } catch (error) {
-        console.log("​error", error);
-      }
-      state.loading = false;
-
-    },
     async getCategories({
       state
     }) {
@@ -64,7 +51,7 @@ export default new Vuex.Store({
       try {
         const link = `https://api.chucknorris.io/jokes/random?category=${payload}`
         const response = await axios.get(link)
-        state.categoryJoke = response.data.value
+        state.joke = response.data.value
         console.log('​response.data', response.data)
 
       } catch (error) {
