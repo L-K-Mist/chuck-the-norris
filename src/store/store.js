@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import nlp from './modules/nlp'
 
 Vue.use(Vuex);
 
@@ -37,7 +38,8 @@ export default new Vuex.Store({
       }
     },
     async fetchCategoryJoke({
-      state
+      state,
+      dispatch
     }, payload) {
       /**
        * EXAMPLE RESULT: {
@@ -53,10 +55,14 @@ export default new Vuex.Store({
         const response = await axios.get(link)
         state.joke = response.data.value
         console.log('​response.data', response.data)
+        dispatch("splitSentences", state.joke)
 
       } catch (error) {
         console.log("​error", error);
       }
     }
+  },
+  modules: {
+    nlp
   }
 });
