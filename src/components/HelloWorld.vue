@@ -5,8 +5,6 @@
       row
       wrap
     >
-
-
       <v-flex mb-4>
         <h1 class="display-2 font-weight-bold mb-3">
           When you just don't know what to do...
@@ -21,23 +19,20 @@
           <br>So Chuck them a topical Norris! And at least give them a smile.
         </p>
       </v-flex>
-<v-flex xs12>
-      <v-btn small class="text-uppercase"
-        v-for="(category, index) in categories" :key="index"
-        @click="fetch(category)"
-      >
-        {{category}}
-      </v-btn>
-  
-</v-flex>
-
+      <v-flex xs12>
+        <v-btn small class="text-uppercase"
+          v-for="(category, index) in categories" :key="index"
+          @click="fetch(category)"
+        >
+          {{category}}
+        </v-btn>
+      </v-flex>
       </v-flex>
       <v-flex xs12 xl10>
         <v-img
           :src="require('../assets/chuckBackground.jpg')"
           class="my-3"
           contain
-          
         >
         <v-container grid-list-xs>
           <v-layout column fluid>
