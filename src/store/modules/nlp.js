@@ -17,8 +17,7 @@ const getters = {
 const mutations = {};
 
 const actions = {
-  splitSentences(
-    {
+  splitSentences({
       // So we can have first sentence at top of meme and rest below. (Trying to not cover Chuck's face with words)
       state
     },
@@ -36,6 +35,16 @@ const actions = {
       state.bottomSentences = null;
     }
     console.log("​bottomSentences", state.bottomSentences);
+  },
+  setTopSentence({
+    state
+  }, payload) {
+    state.topSentence = payload
+  },
+  setBottomSentences({
+    state
+  }, payload) {
+    state.bottomSentences = payload
   }
 };
 
