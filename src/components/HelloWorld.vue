@@ -20,7 +20,7 @@
         </p>
       </v-flex>
       <v-flex xs12>
-        <v-btn small class="text-uppercase"
+        <v-btn small color="primary"class="text-uppercase"
           v-for="(category, index) in categories" :key="index"
           @click="fetch(category)"
         >

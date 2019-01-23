@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
+    <v-toolbar dark scroll-off-screen color="primary" app>
+      <v-toolbar-title class="headline font-weight-bold text-uppercase">
         <span>Chuck-the-Norris</span>
       </v-toolbar-title>
     </v-toolbar>
