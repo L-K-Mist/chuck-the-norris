@@ -15,13 +15,8 @@ const getters = {
 };
 
 const actions = {
-  splitSentences(
-    {
-      // So we can have first sentence at top of meme and rest below.
-      state
-    },
-    payload
-  ) {
+  splitSentences({ state }, payload) {
+    // So we can have first sentence at top of meme and rest below.
     const sentences = nlp(payload) // Gives us an array of sentences
       .sentences()
       .data();

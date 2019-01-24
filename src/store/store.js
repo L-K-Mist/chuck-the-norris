@@ -1,7 +1,10 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-import nlp from './modules/nlp'
+import nlp from "./modules/nlp";
+
+/*eslint-disable no-irregular-whitespace*/
+// Because eslint didn't like my commented out console.logs
 
 Vue.use(Vuex);
 
@@ -14,33 +17,29 @@ export default new Vuex.Store({
   },
   getters: {
     joke(state) {
-      return state.joke
+      return state.joke;
     },
     categories(state) {
-      return state.categories
+      return state.categories;
     },
     categoryJoke(state) {
-      return state.categoryJoke
-    },
+      return state.categoryJoke;
+    }
   },
   mutations: {}, // Evan You has mentioned the likelihood of doing away with mutations, so I'm getting used to doing without them too.
   actions: {
-    async getCategories({
-      state
-    }) {
+    async getCategories({ state }) {
       try {
-        const response = await axios.get("https://api.chucknorris.io/jokes/categories")
-        state.categories = response.data
-        console.log('​response.data', response.data)
-
+        const response = await axios.get(
+          "https://api.chucknorris.io/jokes/categories"
+        );
+        state.categories = response.data;
+        // console.log("​response.data", response.data);
       } catch (error) {
-        console.log("​error", error);
+        // console.log("​error", error);
       }
     },
-    async fetchCategoryJoke({
-      state,
-      dispatch
-    }, payload) {
+    async fetchCategoryJoke({ state, dispatch }, payload) {
       /**
        * EXAMPLE RESULT: {
          "category": ["science"],
@@ -51,14 +50,13 @@ export default new Vuex.Store({
        }
        */
       try {
-        const link = `https://api.chucknorris.io/jokes/random?category=${payload}`
-        const response = await axios.get(link)
-        state.joke = response.data.value
-        console.log('​response.data', response.data)
-        dispatch("splitSentences", state.joke)
-
+        const link = `https://api.chucknorris.io/jokes/random?category=${payload}`;
+        const response = await axios.get(link);
+        state.joke = response.data.value;
+        // console.log("​response.data", response.data);
+        dispatch("splitSentences", state.joke);
       } catch (error) {
-        console.log("​error", error);
+        // console.log("​error", error);
       }
     }
   },
