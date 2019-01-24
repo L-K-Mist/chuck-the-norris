@@ -18,7 +18,7 @@
           <br>So Chuck them a topical Norris! And at least give them a smile.
         </p>
       </v-flex>
-      <v-flex xs12 class="animated bounceInUp text-uppercase">
+      <v-flex xs12 v-if="categories" class="animated bounceInUp text-uppercase">
           <v-btn small color="primary" 
             v-for="category in categories" :key="category"
             @click="fetch(category)"
@@ -26,7 +26,7 @@
             {{category}}
           </v-btn>
       </v-flex>
-      <v-flex xs12 md10 xl8>
+      <v-flex v-if="categories" xs12 md10 xl8>
         <v-img
           :src="require('../assets/chuckBackground.jpg')"
           class="my-3"
