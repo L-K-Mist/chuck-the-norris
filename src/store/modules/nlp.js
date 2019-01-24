@@ -14,10 +14,10 @@ const getters = {
   }
 };
 
-
 const actions = {
-  splitSentences({
-      // So we can have first sentence at top of meme and rest below. (Trying to not cover Chuck's face with words)
+  splitSentences(
+    {
+      // So we can have first sentence at top of meme and rest below.
       state
     },
     payload
@@ -33,17 +33,12 @@ const actions = {
     } else {
       state.bottomSentences = null;
     }
-    console.log("​bottomSentences", state.bottomSentences);
   },
-  setTopSentence({
-    state
-  }, payload) {
-    state.topSentence = payload
+  setTopSentence({ state }, payload) {
+    state.topSentence = payload;
   },
-  setBottomSentences({
-    state
-  }, payload) {
-    state.bottomSentences = payload
+  setBottomSentences({ state }, payload) {
+    state.bottomSentences = payload;
   }
 };
 

@@ -20,13 +20,13 @@
       </v-flex>
       <v-flex xs12 class="animated bounceInUp text-uppercase">
           <v-btn small color="primary" 
-            v-for="(category, index) in categories" :key="category"
+            v-for="category in categories" :key="category"
             @click="fetch(category)"
           >
             {{category}}
           </v-btn>
       </v-flex>
-      <v-flex xs12 md10>
+      <v-flex xs12 md10 xl8>
         <v-img
           :src="require('../assets/chuckBackground.jpg')"
           class="my-3"
@@ -39,7 +39,7 @@
                 enter-active-class="animated bounceInLeft"
                 leave-active-class="animated bounceOutRight"
               >
-              <p v-if="topSentence" class="meme-words" style="font-size: calc(12px + 3vw)">{{topSentence}}</p>           
+              <p v-if="topSentence" class="meme-words" style="font-size: calc(14px + 2vw)">{{topSentence}}</p>           
               </transition>
             </v-flex>
             <v-flex xs12 style="position: absolute; bottom: 1vw; left: 5%; right: 5%">
@@ -47,7 +47,7 @@
                 enter-active-class="animated bounceInLeft delay-1s"
                 leave-active-class="animated bounceOutRight delay-1s"
               >            
-                <p v-if="bottomSentences"  class="meme-words" style="font-size: calc(12px + 3vw)">
+                <p v-if="bottomSentences"  class="meme-words" style="font-size: calc(14px + 2vw)">
                   <span class="text-xs-center" v-for="(sentence, index) in bottomSentences" :key="index">
                     {{sentence.text}}
                   </span>
@@ -63,58 +63,51 @@
 </template>
 
 <script>
-// Animations are done using Animate.css (see Index.html in public folder) 
+// Animations are done using Animate.css (see Index.html in public folder)
 // BONUS: They help keep the user's eyes entertained while fetching from the api
 export default {
-  created(){
-    this.$store.dispatch("getCategories")
+  created() {
+    this.$store.dispatch("getCategories");
   },
   mounted() {
-    this.$nextTick(() => { // To allow startAnim to go from false to true, thereby triggering animation
-        this.startAnim = true
-  })
+    this.$nextTick(() => {
+      // To allow startAnim to go from false to true, thereby triggering animation
+      this.startAnim = true;
+    });
   },
   data: () => ({
-   startAnim: false,
-   sequence: 0
+    startAnim: false,
+    sequence: 0
   }),
   computed: {
-    topSentence: { // Using getters and setters here to nullify values between loads for triggering animation.
-      get(){ 
-        return this.$store.getters.topSentence
+    topSentence: {
+      // Using getters and setters here to nullify values between loads for triggering animation.
+      get() {
+        return this.$store.getters.topSentence;
       },
       set(val) {
-        this.$store.dispatch("setTopSentence", val)
+        this.$store.dispatch("setTopSentence", val);
       }
     },
-    bottomSentences: { // Also for animation's sake
-      get(){
-        return this.$store.getters.bottomSentences
+    bottomSentences: {
+      // Also for animation's sake
+      get() {
+        return this.$store.getters.bottomSentences;
       },
       set(val) {
-        this.$store.dispatch("setBottomSentences", val)
+        this.$store.dispatch("setBottomSentences", val);
       }
-      
     },
     categories() {
-      return this.$store.getters.categories
+      return this.$store.getters.categories;
     }
   },
-  watch: {
-    joke(newVal){
-      console.log("joke", newVal)
-    },
-    categories(newVal){
-      console.log("categories", newVal)
-    },
 
-  },
   methods: {
     fetch(category) {
-      this.topSentence = null
-      this.bottomSentences = null
-			console.log('​fetch -> category', category)
-      this.$store.dispatch("fetchCategoryJoke", category)
+      this.topSentence = null; // activates the setter for topSentence in computed.
+      this.bottomSentences = null;
+      this.$store.dispatch("fetchCategoryJoke", category);
     }
   }
 };
@@ -123,10 +116,11 @@ export default {
 <style scoped>
 .meme-words {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-fill-color: white;
   -webkit-text-stroke-width: 0.17vw;
   -webkit-text-stroke-color: black;
 }
+/* Instead of a timeline, crudely (efficiently?) using animation-delay to manage animation sequence. */
 #second {
   animation-delay: 1.5s;
 }
