@@ -26,42 +26,38 @@
             {{category}}
           </v-btn>
       </v-flex>
-
-          <v-flex xs12 md10>
-            <v-img
-              :src="require('../assets/chuckBackground.jpg')"
-              class="my-3"
-              contain
-            >
-            <v-container grid-list-xs>
-              <v-layout column fluid>
-                <v-flex xs11>
-                  <transition 
-                    enter-active-class="animated bounceInLeft"
-                    leave-active-class="animated bounceOutRight"
-                  >
-                  <p v-if="topSentence" class="meme-words" style="font-size: calc(12px + 3vw)">{{topSentence}}</p>           
-                  </transition>
-                </v-flex>
-                <v-flex xs12 style="position: absolute; bottom: 1vw; left: 5%; right: 5%">
-                  <transition 
-                    enter-active-class="animated bounceInLeft delay-1s"
-                    leave-active-class="animated bounceOutRight delay-1s"
-                  >            
-                    <p v-if="bottomSentences"  class="meme-words" style="font-size: calc(12px + 3vw)">
-                      <span class="text-xs-center" v-for="(sentence, index) in bottomSentences" :key="index">
-                        {{sentence.text}}
-                      </span>
-                    </p>    
-                  </transition>       
-                </v-flex>
-              </v-layout>
-            </v-container>
-            </v-img>
-          </v-flex>
-        
-
-          
+      <v-flex xs12 md10>
+        <v-img
+          :src="require('../assets/chuckBackground.jpg')"
+          class="my-3"
+          contain
+        >
+        <v-container grid-list-xs>
+          <v-layout column fluid>
+            <v-flex xs11>
+              <transition 
+                enter-active-class="animated bounceInLeft"
+                leave-active-class="animated bounceOutRight"
+              >
+              <p v-if="topSentence" class="meme-words" style="font-size: calc(12px + 3vw)">{{topSentence}}</p>           
+              </transition>
+            </v-flex>
+            <v-flex xs12 style="position: absolute; bottom: 1vw; left: 5%; right: 5%">
+              <transition 
+                enter-active-class="animated bounceInLeft delay-1s"
+                leave-active-class="animated bounceOutRight delay-1s"
+              >            
+                <p v-if="bottomSentences"  class="meme-words" style="font-size: calc(12px + 3vw)">
+                  <span class="text-xs-center" v-for="(sentence, index) in bottomSentences" :key="index">
+                    {{sentence.text}}
+                  </span>
+                </p>    
+              </transition>       
+            </v-flex>
+          </v-layout>
+        </v-container>
+        </v-img>
+      </v-flex>  
     </v-layout>
   </v-container>
 </template>

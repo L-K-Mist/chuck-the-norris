@@ -14,7 +14,6 @@ const getters = {
   }
 };
 
-const mutations = {};
 
 const actions = {
   splitSentences({
@@ -50,7 +49,6 @@ const actions = {
 
 export default {
   state,
-  mutations,
   actions,
   getters
 };
