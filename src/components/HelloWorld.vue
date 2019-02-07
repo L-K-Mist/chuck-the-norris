@@ -26,7 +26,7 @@
             {{category}}
           </v-btn>
       </v-flex>
-      <v-flex v-if="categories" class="animated bounceInUp" xs12 md10 xl8>
+      <v-flex v-if="categories" class="animated bounceInUp" xs12 md8 xl6>
         <v-img
           :src="require('../assets/chuckBackground.jpg')"
           class="my-3"
